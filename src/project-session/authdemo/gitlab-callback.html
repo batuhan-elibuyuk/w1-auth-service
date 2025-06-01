@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GitLab Auth Callback</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        margin-top: 100px;
+      }
+      .status {
+        font-size: 18px;
+      }
+      .success {
+        color: green;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Processing GitLab Login...</h1>
+    <p class="status">Please wait...</p>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("code");
+
+      if (!code) {
+        document.querySelector(".status").textContent =
+          "Missing authorization code";
+        document.querySelector(".status").className = "status error";
+      } else {
+        fetch("/auth/gitlab/callback?code=" + encodeURIComponent(code), {
+          method: "GET",
+          credentials: "include",
+        })
+          .then((res) => {
+            if (res.ok) return res.json();
+            return res.text().then((text) => {
+              throw new Error(text);
+            });
+          })
+          .then((user) => {
+            document.querySelector(".status").textContent =
+              `Welcome, ${user.fullname || user.email || "User"}!`;
+            document.querySelector(".status").className = "status success";
+          })
+          .catch((err) => {
+            console.error(err);
+            document.querySelector(".status").textContent =
+              "Login failed: " + err.message;
+            document.querySelector(".status").className = "status error";
+          });
+      }
+    </script>
+  </body>
+</html>

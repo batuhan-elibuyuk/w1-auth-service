@@ -1,0 +1,15 @@
+module.exports = {
+  createUser: require("./createUser"),
+  getIdListOfUserByField: require("./getIdListOfUserByField"),
+  getUserById: require("./getUserById"),
+  getUserAggById: require("./getUserAggById"),
+  getUserListByQuery: require("./getUserListByQuery"),
+  getUserStatsByQuery: require("./getUserStatsByQuery"),
+  getUserByQuery: require("./getUserByQuery"),
+  updateUserById: require("./updateUserById"),
+  updateUserByIdList: require("./updateUserByIdList"),
+  updateUserByQuery: require("./updateUserByQuery"),
+  deleteUserById: require("./deleteUserById"),
+  deleteUserByQuery: require("./deleteUserByQuery"),
+  getUserByEmail: require("./getUserByEmail"),
+};

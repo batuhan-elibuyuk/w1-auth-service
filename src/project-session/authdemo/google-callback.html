@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Google Auth Callback</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2rem;
+      }
+      pre {
+        background: #f4f4f4;
+        padding: 1rem;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Google OAuth Result</h1>
+    <p>Fetching token and profile data...</p>
+    <div id="result"></div>
+
+    <script>
+      const code = new URLSearchParams(window.location.search).get("code");
+
+      async function getUserData() {
+        if (!code) {
+          document.getElementById("result").textContent =
+            "No authorization code found in URL.";
+          return;
+        }
+
+        try {
+          const response = await fetch(
+            `/auth/google/callback?code=${encodeURIComponent(code)}`,
+          );
+          const data = await response.json();
+
+          document.getElementById("result").innerHTML = `
+          <h2>Profile</h2>
+          <pre>${JSON.stringify(data, null, 2)}</pre>
+          <h2>Token</h2>
+          <pre>${JSON.stringify(data.accessToken, null, 2)}</pre>
+        `;
+        } catch (e) {
+          document.getElementById("result").textContent =
+            "Error fetching user info.";
+          console.error("Auth error:", e);
+        }
+      }
+
+      getUserData();
+    </script>
+  </body>
+</html>

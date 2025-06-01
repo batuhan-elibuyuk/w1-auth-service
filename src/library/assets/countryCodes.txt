@@ -1,0 +1,1 @@
+TR,US,GB,DE,FR,IT,ES

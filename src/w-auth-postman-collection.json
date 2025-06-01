@@ -1,0 +1,210 @@
+{
+  "info": {
+    "name": "w-auth-service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "registerUser",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "ExampleValue",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"avatar\": \"String\",\n  \"socialCode\": \"String\",\n  \"password\": \"String\",\n  \"fullname\": \"String\",\n  \"email\": \"String\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{serviceUrl}}//registeruser",
+          "host": [
+            "{{serviceUrl}}"
+          ],
+          "path": [
+            "registeruser"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "updateUser",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "ExampleValue",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullname\": \"String\",\n  \"avatar\": \"String\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{serviceUrl}}//users/:userId",
+          "host": [
+            "{{serviceUrl}}"
+          ],
+          "path": [
+            "users",
+            ":userId"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "updateUserRole",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "ExampleValue",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"roleId\": \"String\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{serviceUrl}}//userrole/:userId",
+          "host": [
+            "{{serviceUrl}}"
+          ],
+          "path": [
+            "userrole",
+            ":userId"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "updatePassword",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "ExampleValue",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"oldPassword\": \"String\",\n  \"newPassword\": \"String\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{serviceUrl}}//password/:userId",
+          "host": [
+            "{{serviceUrl}}"
+          ],
+          "path": [
+            "password",
+            ":userId"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getUser",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "ExampleValue",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{serviceUrl}}//users/:userId",
+          "host": [
+            "{{serviceUrl}}"
+          ],
+          "path": [
+            "users",
+            ":userId"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "listUsers",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "ExampleValue",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{serviceUrl}}//users",
+          "host": [
+            "{{serviceUrl}}"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
